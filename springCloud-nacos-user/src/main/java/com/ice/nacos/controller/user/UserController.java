@@ -1,19 +1,18 @@
-package com.ice.nacos.controller;
+package com.ice.nacos.controller.user;
+import java.time.LocalDateTime;
 
-import com.google.errorprone.annotations.Var;
 import com.ice.nacos.client.GoodsClient;
+import com.ice.nacos.model.entity.user.User;
+import com.ice.nacos.model.mo.user.LoginMO;
+import com.ice.nacos.result.Result;
+import com.ice.nacos.service.user.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.List;
 
 /**
  * @ClassName UserController
@@ -39,6 +38,9 @@ public class UserController {
 
     @Autowired
     private GoodsClient goodsClient;
+
+    @Autowired
+    private UserService userService;
 
 
     //推荐http rest方式通信： 1.restTemplate  缺点: (1) 无法实现请求负载均衡  (2)路径写死在代码中不利于后续维护
@@ -87,5 +89,17 @@ public class UserController {
         //调用商品服务
         String result = goodsClient.goods(21);
         return result;
+    }
+
+
+    @GetMapping("/getById")
+    public Result getUser(@RequestParam("id") Integer id){
+        return userService.getOne(id);
+    }
+
+
+    @PostMapping("/login")
+    public Result login(@RequestBody LoginMO loginMO){
+        return userService.login(loginMO);
     }
 }

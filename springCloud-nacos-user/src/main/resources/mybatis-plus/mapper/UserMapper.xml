@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ice.nacos.mapper.user.UserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.ice.nacos.model.entity.user.User">
+        <id column="id" property="id" />
+        <result column="enterprise_id" property="enterpriseId" />
+        <result column="phone" property="phone" />
+        <result column="mail" property="mail" />
+        <result column="is_del" property="isDel" />
+        <result column="login_time" property="loginTime" />
+        <result column="img" property="img" />
+        <result column="nickname" property="nickname" />
+        <result column="user_name" property="userName"/>
+        <result column="password" property="password"/>
+        <result column="sex" property="sex" />
+        <result column="province" property="province" />
+        <result column="city" property="city" />
+        <result column="area" property="area" />
+        <result column="country" property="country" />
+        <result column="register_time" property="registerTime" />
+        <result column="register_ip" property="registerIp" />
+        <result column="login_ip" property="loginIp" />
+        <result column="birthday" property="birthday" />
+        <result column="create_time" property="createTime" />
+        <result column="modify_time" property="modifyTime" />
+        <result column="modify_user" property="modifyUser" />
+        <result column="is_pull_black" property="isPullBlack" />
+        <result column="pull_black_time" property="pullBlackTime" />
+    </resultMap>
+
+    <select id="getById" resultType="com.ice.nacos.model.entity.user.User">
+        select id,
+               enterprise_id,
+               phone,
+               mail,
+               is_del,
+               login_time,
+               img,
+               nickname,
+               user_name,
+               sex,
+               province,
+               city,
+               area,
+               country,
+               register_time,
+               register_ip,
+               login_ip,
+               birthday,
+               create_time,
+               modify_time,
+               modify_user,
+               is_pull_black,
+               pull_black_time
+        from user
+        where id = #{id}
+    </select>
+
+    <select id="getByNameAndPwd" resultMap="BaseResultMap">
+        select id,
+               enterprise_id,
+               phone,
+               mail,
+               is_del,
+               login_time,
+               img,
+               nickname,
+               user_name,
+               password,
+               sex,
+               province,
+               city,
+               area,
+               country,
+               register_time,
+               register_ip,
+               login_ip,
+               birthday,
+               create_time,
+               modify_time,
+               modify_user,
+               is_pull_black,
+               pull_black_time
+        from user
+        where user_name = #{loginMO.userName}
+          and password = #{loginMO.password}
+    </select>
+</mapper>
