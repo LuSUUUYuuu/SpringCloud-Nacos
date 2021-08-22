@@ -3,7 +3,12 @@ server:
 
 spring:
   application:
-    name: NACOS-USER
+    name: NACOS-USER #微服务服务名
   cloud:
     nacos:
       server-addr: 1.117.47.7:8848
+      discovery:
+        server-addr: ${spring.cloud.nacos.server-addr} #作为nacos client 注册地址
+        service: ${spring.application.name} #nacos server 注册服务名称
+
+

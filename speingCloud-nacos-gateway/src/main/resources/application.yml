@@ -1,0 +1,46 @@
+server:
+  port: 9999
+
+spring:
+  application:
+    name: NACOS-GATEWAY #微服务服务名
+  cloud:
+    nacos:
+      server-addr: 1.117.47.7:8848
+      discovery:
+        server-addr: ${spring.cloud.nacos.server-addr} #作为nacos client 注册地址
+        service: ${spring.application.name} #nacos server 注册服务名称
+
+
+    gateway:
+      routes:  #用来配置路由规则
+        # admins router
+        - id: commons_router
+          uri: lb://NACOS-COMMONS
+          predicates:
+            - Path=/commons/discover
+          filters:
+            - StripPrefix=1  #去掉请求前缀filter int数字 1:去掉一级  2:去掉两级
+
+        # admins router
+        - id: user_router
+          uri: lb://NACOS-USER
+          predicates:
+            - Path=/user/discover
+          filters:
+            - StripPrefix=1  #去掉请求前缀filter int数字 1:去掉一级  2:去掉两级
+
+
+        # admins router
+        - id: goods_router
+          uri: lb://NACOS-GOODS
+          predicates:
+            - Path=/goods/discover
+          filters:
+            - StripPrefix=1  #去掉请求前缀filter int数字 1:去掉一级  2:去掉两级
+      globalcors:  #跨域配置处理
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
