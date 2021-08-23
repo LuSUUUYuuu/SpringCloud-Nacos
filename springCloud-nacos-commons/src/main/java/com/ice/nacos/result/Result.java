@@ -60,8 +60,8 @@ public class Result<T> {
      * 成功并返回对象
      * @return
      */
-    public static<T> Result<T> successData(T data) {
-        return new Result(1, "SUCCESS", data);
+    public static<T> Result<T> success(T data) {
+        return new Result(data);
     }
 
 

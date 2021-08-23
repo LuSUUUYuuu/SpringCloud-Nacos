@@ -10,3 +10,7 @@ spring:
       discovery:
         server-addr: ${spring.cloud.nacos.server-addr} #作为nacos client 注册地址
         service: ${spring.application.name} #nacos server 注册服务名称
+  redis:
+    host: 1.117.47.7
+    port: 6379
+    database: 1

@@ -61,6 +61,12 @@
                 <artifactId>lombok</artifactId>
                 <version>1.18.12</version>
             </dependency>
+
+            <dependency>
+                <groupId>org.ice</groupId>
+                <artifactId>springCloud-nacos-commons</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

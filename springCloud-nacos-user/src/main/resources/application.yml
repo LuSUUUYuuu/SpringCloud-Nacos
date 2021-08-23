@@ -38,10 +38,13 @@ mybatis-plus:
     refresh: false
     # 原生配置
     configuration:
+      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
       map-underscore-to-camel-case: true
       cache-enabled: false
 
 
 logging:
   level:
-    com.ice.mapper: debug
+    com:
+      ice.nacos:
+        mapper: debug

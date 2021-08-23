@@ -17,7 +17,7 @@ import com.ice.nacos.result.Result;
 public interface UserService extends IService<User> {
 
 
-    Result getOne(Integer id);
+    Result<?> getOne(Integer id);
 
-    Result login(LoginMO loginMO);
+    Result<?> login(LoginMO loginMO);
 }
