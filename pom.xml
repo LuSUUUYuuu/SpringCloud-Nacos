@@ -11,8 +11,8 @@
     <modules>
         <module>springCloud-nacos-user</module>
         <module>springCloud-nacos-goods</module>
-        <module>springCloud-nacos-gateway</module>
         <module>springCloud-nacos-commons</module>
+        <module>springCloud-nacos-ES</module>
     </modules>
 
 
@@ -67,6 +67,9 @@
                 <artifactId>springCloud-nacos-commons</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>
+
+
+
         </dependencies>
     </dependencyManagement>
 
