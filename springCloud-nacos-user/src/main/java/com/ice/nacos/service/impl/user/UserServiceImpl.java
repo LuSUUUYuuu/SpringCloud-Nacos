@@ -51,4 +51,21 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         log.info("登录成功");
         return Result.success(byNameAndPwd);
     }
+
+    @Transactional
+    @Override
+    public Result<?> register(LoginMO loginMO) {
+        log.info("用户注册");
+        Boolean aBoolean = userMapper.checkUserNameRepeat(loginMO.getUserName());
+        if (aBoolean){
+            return Result.failure("用户名已存在，请重新注册");
+        }
+        User user = new User();
+        user.setUserName(loginMO.getUserName()).setPassword(loginMO.getPassword());
+        this.save(user);
+        return Result.success();
+    }
+
+
+
 }

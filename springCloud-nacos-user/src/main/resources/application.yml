@@ -10,14 +10,14 @@ spring:
       discovery:
         server-addr: ${spring.cloud.nacos.server-addr} #作为nacos client 注册地址
         service: ${spring.application.name} #nacos server 注册服务名称
-
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://101.132.223.109:3306/SpringCloud_Nacos?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false
     username: root
+
 mybatis-plus:
-  mapper-locations: classpath:/mybatis-plus/mapper/*Mapper.xml
+  mapper-locations: classpath:mapper/*.xml
   typeAliasesPackage: com.ice.nacos.model.entity
   global-config:
     # 数据库相关配置

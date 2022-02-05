@@ -17,7 +17,32 @@ import com.ice.nacos.result.Result;
 public interface UserService extends IService<User> {
 
 
+    /** 
+    * @Description: 根据用户ID查询用户 
+    * @Param:  
+    * @return:  
+    * @Author: LuuuuSuYunnn
+    * @Date: 2022/2/6 
+    */ 
     Result<?> getOne(Integer id);
 
+    /** 
+    * @Description: 用户登录 
+    * @Param:  
+    * @return:  
+    * @Author: LuuuuSuYunnn
+    * @Date: 2022/2/6 
+    */ 
     Result<?> login(LoginMO loginMO);
+
+    
+    /** 
+    * @Description: 注册用户 
+    * @Param:  
+    * @return:  
+    * @Author: LuuuuSuYunnn
+    * @Date: 2022/2/6 
+    */ 
+    Result<?> register(LoginMO loginMO);
+    
 }
