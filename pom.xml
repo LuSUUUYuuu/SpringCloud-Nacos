@@ -13,6 +13,7 @@
         <module>springCloud-nacos-goods</module>
         <module>springCloud-nacos-commons</module>
         <module>springCloud-nacos-ES</module>
+        <module>springCloud-nacos-gateway</module>
     </modules>
 
 

@@ -1,0 +1,38 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: NACOS-GATEWAY #微服务服务名
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: user_route
+          uri: http://localhost:8989
+          predicates:
+            - Path=/user/**
+
+        - id: goods_route
+          uri: http://localhost:9090
+          predicates:
+            - Path=/goods/**
+
+        - id: es_route
+          uri: http://localhost:9191
+          predicates:
+            - Path=/es/**
+    nacos:
+      server-addr: 1.117.47.7:8848
+      discovery:
+        server-addr: ${spring.cloud.nacos.server-addr} #作为nacos client 注册地址
+        service: ${spring.application.name} #nacos server 注册服务名称
+
+
+logging:
+  level:
+    com:
+      ice.nacos:
+        mapper: debug
