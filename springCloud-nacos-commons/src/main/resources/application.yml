@@ -14,3 +14,10 @@ spring:
     host: 1.117.47.7
     port: 6379
     database: 1
+    jedis:
+      pool:
+        max-idle: 8
+        max-wait: -1
+        min-idle: 0
+        max-active: 8
+    timeout: 5000
