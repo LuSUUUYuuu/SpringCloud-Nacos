@@ -26,6 +26,9 @@ public class DiscoverController {
     @GetMapping()
     public String discover(){
         LOGGER.info("检测服务,端口: {}", port);
+
+
+
         return "User service OK";
     }
 }
